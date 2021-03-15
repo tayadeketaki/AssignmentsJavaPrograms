@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test thread-count="5" name="Add Book">
+            <classes>
+                <class name="classesRequestResponse.AddBookTest"></class>
+            </classes>
+    </test>
+    <test thread-count="5" name="Search Book By ID">
+        <classes>
+            <class name="classesRequestResponse.GetBookByIDTest"></class>
+        </classes>
+    </test>
+    <test thread-count="5" name="Duplicate Book Addition">
+        <parameter name="duplicateBookValidationMessage" value="Add Book operation failed, looks like the book already exists"></parameter>
+        <classes>
+            <class name="classesRequestResponse.DuplicateAddBookTest"></class>
+        </classes>
+    </test>
+    <test thread-count="5" name="Delete the existing book from system">
+        <parameter name="deleteBookValidationMessage" value="book is successfully deleted"></parameter>
+        <classes>
+            <class name="classesRequestResponse.DeleteBookTest"></class>
+        </classes>
+    </test>
+    <test thread-count="5" name="Create 3 books with same author and validate books are exists in system" >
+        <parameter name="partialAuthorName" value="B202"></parameter>
+        <classes>
+            <class name="classesRequestResponse.GetBookByAuthorNameTest"></class>
+        </classes>
+    </test>
+    <test thread-count="5" name="Create 3 books with same author and validate books exist. Delete one book and check the status of books" >
+        <parameter name="partialCreateAuthorName" value="221"></parameter>
+        <parameter name="deleteBookValidationMessage" value="book is successfully deleted"></parameter>
+        <classes>
+            <class name="classesRequestResponse.GetBookAuthorNameDeleteTest"></class>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
