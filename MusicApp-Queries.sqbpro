@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/ketakitayade/Documents/VapasiDBMS/MusicApp.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="136"/><column_width id="1" width="0"/><column_width id="2" width="18"/><column_width id="3" width="1381"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,14:mainPlayList_Track"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Artists" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="29"/><column index="2" value="77"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="PlayList_Track" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="3" mode="0"/></sort><column_widths><column index="1" value="33"/><column index="2" value="45"/><column index="3" value="44"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Tracks" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="27"/><column index="2" value="45"/><column index="3" value="54"/><column index="4" value="37"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="User" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="29"/><column index="2" value="83"/><column index="3" value="131"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT pl.pl_name as PlayList_Name, count(pt.pt_t_id) as Tracks_Per_playlist
+FROM PlayList_Track pt INNER JOIN PlayLists pl ON pt.pt_p_id = pl.pl_id
+GROUP BY pt_p_id;
+
+SELECT  PlayLists.*
+FROM  PlayLists LEFT JOIN PlayList_Track ON PlayLists.pl_id = PlayList_Track.pt_p_id
+WHERE PlayList_Track.pt_p_id IS NULL;
+
+
+SELECT * FROM PlayLists;
+
+SELECT pt_p_id, Count(pt_t_id) as cnt 
+from PlayList_Track INNER JOIN PlayLists
+GROUP by  pt_t_id ORDER by cnt DESC LIMIT 1;
+
+SELECT t_name as Track_Name, Max(t_drt) as Longest_Track
+FROM Tracks;</sql><current_tab id="0"/></tab_sql></sqlb_project>
